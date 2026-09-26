@@ -21,10 +21,12 @@ export const Header: React.FC<HeaderProps> = ({ onMobileMenuOpen }) => {
           <Menu className="w-6 h-6" />
         </button>
 
-        {/* Mobile Logo View */}
-        <div className="flex items-center gap-3 lg:hidden">
-          <img src="/vizid.png" alt="Vizid Logo" className="h-8 w-auto object-contain" />
-          <span className="text-xs font-bold uppercase tracking-wider text-amber-400">Admin</span>
+        {/* Mobile Logo View matching Main Site */}
+        <div className="flex flex-col lg:hidden">
+          <img src="/vizid.png" alt="Vizid" className="h-8 w-auto object-contain" />
+          <span className="text-[8px] tracking-[0.2em] font-light text-stone-300 uppercase -mt-0.5">
+            .....live luxury
+          </span>
         </div>
 
         {/* Desktop Header Badge */}

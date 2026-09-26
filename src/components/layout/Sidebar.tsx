@@ -5,7 +5,6 @@ import {
   Package,
   ShoppingBag,
   ExternalLink,
-  ShieldCheck,
   X,
 } from 'lucide-react';
 
@@ -35,27 +34,17 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
 
   const sidebarContent = (
     <div className="flex flex-col h-full glass-sidebar text-slate-300">
-      {/* Brand Header with Real vizid.png Logo */}
+      {/* Brand Header matching Main Site Branding */}
       <div className="flex items-center justify-between h-24 px-6 border-b border-white/10">
         <NavLink to="/" className="flex items-center gap-3 group" onClick={onMobileClose}>
-          <div className="relative">
-            <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-amber-500/30 to-amber-300/10 blur-md group-hover:opacity-100 opacity-70 transition-opacity" />
+          <div className="flex flex-col items-start justify-center">
             <img
               src="/vizid.png"
-              alt="Vizid Decor Logo"
-              className="h-10 w-auto object-contain relative z-10 group-hover:scale-105 transition-transform duration-300"
-              onError={(e) => {
-                // Fallback to text if image fails to load
-                (e.target as HTMLElement).style.display = 'none';
-              }}
+              alt="Vizid - Live Luxury"
+              className="h-9 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-extrabold text-slate-100 text-lg tracking-wider uppercase font-sans">
-              VIZID DECOR
-            </span>
-            <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-400">
-              <ShieldCheck className="w-3 h-3" /> Admin Panel
+            <span className="text-[9px] tracking-[0.25em] font-light text-stone-300 uppercase -mt-0.5 group-hover:text-white transition-colors">
+              .....live luxury
             </span>
           </div>
         </NavLink>

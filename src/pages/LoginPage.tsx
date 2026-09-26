@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
-import { ShieldCheck, Lock, Mail, Loader2, AlertCircle } from 'lucide-react';
+import { Lock, Mail, Loader2, AlertCircle, ShieldCheck } from 'lucide-react';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -49,28 +49,26 @@ export const LoginPage: React.FC = () => {
 
       {/* Glassmorphism Card */}
       <div className="w-full max-w-md glass-modal rounded-3xl p-8 shadow-2xl relative z-10 my-8 backdrop-blur-2xl">
-        {/* Brand Header with vizid.png Logo */}
+        {/* Brand Header matching Main Site */}
         <div className="flex flex-col items-center text-center mb-8">
-          <div className="relative mb-4 group">
-            <div className="absolute -inset-2 rounded-2xl bg-gradient-to-r from-amber-500/40 via-yellow-500/20 to-amber-600/30 blur-lg group-hover:opacity-100 opacity-80 transition-opacity" />
-            <div className="p-3 rounded-2xl bg-slate-950/80 border border-white/10 relative z-10 shadow-2xl">
-              <img
-                src="/vizid.png"
-                alt="Vizid Decor Logo"
-                className="h-14 w-auto object-contain"
-              />
-            </div>
+          <div className="flex flex-col items-center justify-center mb-3">
+            <img
+              src="/vizid.png"
+              alt="Vizid - Live Luxury"
+              className="h-12 w-auto object-contain"
+            />
+            <span className="text-[9px] tracking-[0.25em] font-light text-stone-300 uppercase mt-0.5">
+              .....live luxury
+            </span>
           </div>
 
-          <h1 className="text-xl font-extrabold text-slate-100 tracking-wider uppercase font-sans mt-1">
-            VIZID DECOR
-          </h1>
-          <div className="flex items-center gap-1.5 mt-1 text-xs font-bold uppercase tracking-widest text-amber-400">
-            <ShieldCheck className="w-4 h-4" />
-            <span>Admin Control Panel</span>
+          <div className="flex items-center gap-1.5 mt-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-bold uppercase tracking-widest text-amber-400">
+            <ShieldCheck className="w-3.5 h-3.5" />
+            <span>Admin Portal</span>
           </div>
-          <p className="text-xs text-slate-400 mt-2">
-            Sign in with your authorized admin credentials to access the store management system.
+
+          <p className="text-xs text-slate-400 mt-3">
+            Sign in with your authorized admin credentials to manage store inventory & customer orders.
           </p>
         </div>
 
