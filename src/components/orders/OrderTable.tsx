@@ -7,7 +7,6 @@ import {
   Filter,
   Eye,
   ShoppingBag,
-  ChevronRight,
   Phone,
   CreditCard,
 } from 'lucide-react';
@@ -74,8 +73,8 @@ export const OrderTable: React.FC<OrderTableProps> = ({
 
   return (
     <div className="space-y-6">
-      {/* Controls Bar: Search & Status Filter */}
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 bg-slate-900/80 p-4 rounded-2xl border border-slate-800/80 shadow-xl backdrop-blur-md">
+      {/* Glass Controls Bar */}
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 glass-card p-4 rounded-2xl">
         {/* Search */}
         <div className="relative flex-1 max-w-md">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
@@ -84,7 +83,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search by phone number, Paystack ref, or Order ID..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 text-xs sm:text-sm focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
+            className="w-full pl-10 pr-4 py-2.5 rounded-xl glass-input text-xs sm:text-sm"
           />
         </div>
 
@@ -94,10 +93,10 @@ export const OrderTable: React.FC<OrderTableProps> = ({
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="w-full sm:w-auto pl-9 pr-8 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-xs sm:text-sm focus:outline-none focus:border-amber-500 cursor-pointer appearance-none"
+            className="w-full sm:w-auto pl-9 pr-8 py-2.5 rounded-xl glass-input text-xs sm:text-sm cursor-pointer appearance-none"
           >
             {statusOptions.map((opt) => (
-              <option key={opt.value} value={opt.value}>
+              <option key={opt.value} value={opt.value} className="bg-slate-900 text-slate-100">
                 {opt.label}
               </option>
             ))}
@@ -105,15 +104,15 @@ export const OrderTable: React.FC<OrderTableProps> = ({
         </div>
       </div>
 
-      {/* Orders Table Card */}
-      <div className="bg-slate-900/80 border border-slate-800/80 rounded-2xl shadow-xl overflow-hidden backdrop-blur-md">
+      {/* Glass Orders Table Card */}
+      <div className="glass-card rounded-2xl overflow-hidden">
         {isLoading ? (
           <div className="p-6">
             <TableSkeleton rows={6} cols={6} />
           </div>
         ) : filteredOrders.length === 0 ? (
           <div className="py-16 px-4 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-slate-800/60 border border-slate-700/60 flex items-center justify-center mx-auto mb-4 text-slate-500">
+            <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 text-slate-500">
               <ShoppingBag className="w-8 h-8 opacity-60" />
             </div>
             <h3 className="text-lg font-bold text-slate-200">No orders found</h3>
@@ -128,7 +127,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                   setSearchTerm('');
                   setSelectedStatus('All');
                 }}
-                className="mt-4 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-300 transition-colors"
+                className="mt-4 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-slate-300 transition-colors"
               >
                 Clear Filters
               </button>
@@ -138,7 +137,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 bg-slate-950/60 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <tr className="border-b border-white/10 bg-slate-950/40 text-[11px] font-bold uppercase tracking-wider text-slate-400">
                   <th className="py-4 px-6">Order ID / Reference</th>
                   <th className="py-4 px-6">Customer Phone</th>
                   <th className="py-4 px-6">Total Amount</th>
@@ -147,12 +146,12 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                   <th className="py-4 px-6 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-800/60 text-sm">
+              <tbody className="divide-y divide-white/5 text-sm">
                 {filteredOrders.map((order) => (
                   <tr
                     key={order.id}
                     onClick={() => onViewOrder(order)}
-                    className="hover:bg-slate-800/40 transition-colors cursor-pointer group"
+                    className="hover:bg-white/5 transition-colors cursor-pointer group"
                   >
                     {/* Order ID & Reference */}
                     <td className="py-4 px-6">
@@ -190,15 +189,15 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                           value={order.status}
                           onChange={(e) => handleInlineStatusChange(e, order.id)}
                           disabled={updatingOrderId === order.id}
-                          className="bg-slate-950 border border-slate-800 rounded-lg text-[11px] font-semibold text-slate-300 px-2 py-1 focus:outline-none focus:border-amber-500 cursor-pointer disabled:opacity-50"
+                          className="glass-input rounded-lg text-[11px] font-semibold text-slate-300 px-2 py-1 cursor-pointer disabled:opacity-50"
                         >
-                          <option value="pending">Pending</option>
-                          <option value="paid">Paid</option>
-                          <option value="processing">Processing</option>
-                          <option value="shipped">Shipped</option>
-                          <option value="delivered">Delivered</option>
-                          <option value="failed">Failed</option>
-                          <option value="cancelled">Cancelled</option>
+                          <option value="pending" className="bg-slate-900">Pending</option>
+                          <option value="paid" className="bg-slate-900">Paid</option>
+                          <option value="processing" className="bg-slate-900">Processing</option>
+                          <option value="shipped" className="bg-slate-900">Shipped</option>
+                          <option value="delivered" className="bg-slate-900">Delivered</option>
+                          <option value="failed" className="bg-slate-900">Failed</option>
+                          <option value="cancelled" className="bg-slate-900">Cancelled</option>
                         </select>
                       </div>
                     </td>

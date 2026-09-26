@@ -7,7 +7,6 @@ import {
   ExternalLink,
   ShieldCheck,
   X,
-  Sparkles,
 } from 'lucide-react';
 
 interface SidebarProps {
@@ -23,46 +22,55 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
       icon: LayoutDashboard,
     },
     {
-      name: 'Products',
+      name: 'Products Catalog',
       path: '/products',
       icon: Package,
     },
     {
-      name: 'Orders',
+      name: 'Orders Management',
       path: '/orders',
       icon: ShoppingBag,
     },
   ];
 
   const sidebarContent = (
-    <div className="flex flex-col h-full bg-slate-950 border-r border-slate-800/80 text-slate-300">
-      {/* Brand Header */}
-      <div className="flex items-center justify-between h-20 px-6 border-b border-slate-800/80">
+    <div className="flex flex-col h-full glass-sidebar text-slate-300">
+      {/* Brand Header with Real vizid.png Logo */}
+      <div className="flex items-center justify-between h-24 px-6 border-b border-white/10">
         <NavLink to="/" className="flex items-center gap-3 group" onClick={onMobileClose}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-600 via-amber-500 to-yellow-400 flex items-center justify-center text-slate-950 font-bold shadow-lg shadow-amber-500/20 group-hover:scale-105 transition-transform">
-            <Sparkles className="w-5 h-5 fill-slate-950" />
+          <div className="relative">
+            <div className="absolute -inset-1 rounded-xl bg-gradient-to-r from-amber-500/30 to-amber-300/10 blur-md group-hover:opacity-100 opacity-70 transition-opacity" />
+            <img
+              src="/vizid.png"
+              alt="Vizid Decor Logo"
+              className="h-10 w-auto object-contain relative z-10 group-hover:scale-105 transition-transform duration-300"
+              onError={(e) => {
+                // Fallback to text if image fails to load
+                (e.target as HTMLElement).style.display = 'none';
+              }}
+            />
           </div>
-          <div>
-            <div className="font-extrabold text-slate-100 text-lg tracking-wider font-sans">
+          <div className="flex flex-col">
+            <span className="font-extrabold text-slate-100 text-lg tracking-wider uppercase font-sans">
               VIZID DECOR
-            </div>
-            <div className="flex items-center gap-1.5 text-[10px] uppercase font-bold tracking-widest text-amber-400/90">
-              <ShieldCheck className="w-3 h-3" /> Admin Dashboard
-            </div>
+            </span>
+            <span className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-amber-400">
+              <ShieldCheck className="w-3 h-3" /> Admin Panel
+            </span>
           </div>
         </NavLink>
         <button
           onClick={onMobileClose}
-          className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-900"
+          className="lg:hidden p-2 rounded-xl text-slate-400 hover:text-slate-100 hover:bg-white/5 transition-colors"
         >
           <X className="w-5 h-5" />
         </button>
       </div>
 
       {/* Navigation Links */}
-      <div className="flex-1 py-6 px-4 space-y-1.5 overflow-y-auto">
-        <div className="px-3 pb-2 text-[11px] font-bold uppercase tracking-wider text-slate-400/80">
-          Management
+      <div className="flex-1 py-6 px-4 space-y-2 overflow-y-auto">
+        <div className="px-3 pb-2 text-[11px] font-bold uppercase tracking-widest text-slate-400/80">
+          Main Navigation
         </div>
         {navItems.map((item) => {
           const Icon = item.icon;
@@ -73,10 +81,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
               end={item.path === '/'}
               onClick={onMobileClose}
               className={({ isActive }) =>
-                `flex items-center gap-3 px-4 py-3 rounded-xl font-medium text-sm transition-all duration-200 ${
+                `flex items-center gap-3 px-4 py-3 rounded-2xl font-medium text-sm transition-all duration-200 ${
                   isActive
-                    ? 'bg-gradient-to-r from-amber-500/20 to-amber-500/5 text-amber-400 border border-amber-500/30 shadow-md shadow-amber-950/40'
-                    : 'text-slate-400 hover:text-slate-100 hover:bg-slate-900/80 border border-transparent'
+                    ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30 shadow-lg shadow-amber-950/40 backdrop-blur-md font-semibold'
+                    : 'text-slate-400 hover:text-slate-100 hover:bg-white/5 border border-transparent'
                 }`
               }
             >
@@ -88,12 +96,12 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
       </div>
 
       {/* Footer link to public shop */}
-      <div className="p-4 border-t border-slate-800/80 bg-slate-950/50">
+      <div className="p-4 border-t border-white/10 bg-slate-950/40 backdrop-blur-md">
         <a
           href="https://viziddecors.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-between p-3 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-300 hover:text-amber-400 hover:border-amber-500/30 transition-all text-xs font-medium group"
+          className="flex items-center justify-between p-3.5 rounded-2xl bg-white/5 border border-white/10 text-slate-300 hover:text-amber-400 hover:border-amber-500/40 hover:bg-amber-500/10 transition-all text-xs font-medium group"
         >
           <span className="flex items-center gap-2">
             <span>Public Storefront</span>
@@ -115,10 +123,10 @@ export const Sidebar: React.FC<SidebarProps> = ({ mobileOpen, onMobileClose }) =
       {mobileOpen && (
         <div className="fixed inset-0 z-40 lg:hidden">
           <div
-            className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm animate-in fade-in"
+            className="fixed inset-0 bg-slate-950/80 backdrop-blur-md animate-in fade-in"
             onClick={onMobileClose}
           />
-          <div className="fixed inset-y-0 left-0 w-72 max-w-full bg-slate-950 z-50 animate-in slide-in-from-left duration-300">
+          <div className="fixed inset-y-0 left-0 w-72 max-w-full z-50 animate-in slide-in-from-left duration-300">
             {sidebarContent}
           </div>
         </div>

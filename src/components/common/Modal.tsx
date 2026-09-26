@@ -46,26 +46,26 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      {/* Backdrop */}
+      {/* Glass Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-950/80 backdrop-blur-sm transition-opacity animate-in fade-in"
+        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity animate-in fade-in"
         onClick={onClose}
       />
 
-      {/* Modal Dialog */}
+      {/* Glass Dialog */}
       <div
-        className={`relative w-full ${maxWidthClasses} bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 my-8`}
+        className={`relative w-full ${maxWidthClasses} glass-modal rounded-3xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 my-8`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-slate-800 bg-slate-900/50">
+        <div className="flex items-start justify-between p-6 border-b border-white/10 bg-white/5">
           <div>
             <h3 className="text-xl font-bold text-slate-100">{title}</h3>
             {subtitle && <p className="text-xs text-slate-400 mt-1">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800 transition-colors"
+            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-100 hover:bg-white/10 transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
