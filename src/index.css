@@ -4,58 +4,62 @@
 
 @layer base {
   body {
-    @apply bg-slate-950 text-slate-100 min-h-screen font-sans antialiased selection:bg-amber-500 selection:text-slate-950;
+    @apply bg-[#FAF9F7] text-[#2C2C2C] min-h-screen font-sans antialiased selection:bg-[#c9a96e] selection:text-white;
     background-image: 
-      radial-gradient(at 0% 0%, rgba(217, 119, 6, 0.08) 0px, transparent 50%),
-      radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
-      radial-gradient(at 50% 100%, rgba(180, 83, 9, 0.06) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(201, 169, 110, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 0%, rgba(74, 79, 76, 0.04) 0px, transparent 50%),
+      radial-gradient(at 50% 100%, rgba(139, 111, 71, 0.04) 0px, transparent 50%);
     background-attachment: fixed;
+  }
+
+  h1, h2, h3, h4, .font-heading {
+    font-family: 'Cormorant Garamond', serif;
   }
 }
 
 @layer utilities {
-  /* Glassmorphism utility classes */
+  /* Brand card & layout utility classes */
   .glass-card {
-    @apply bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-2xl shadow-black/40;
+    @apply bg-white border border-[#E8E6E1] shadow-sm shadow-stone-200/50 rounded-2xl;
   }
   
   .glass-card-hover {
-    @apply glass-card hover:bg-slate-900/60 hover:border-amber-500/30 hover:shadow-amber-950/20 transition-all duration-300;
+    @apply glass-card hover:shadow-md hover:border-[#c9a96e]/40 transition-all duration-300;
   }
 
   .glass-header {
-    @apply bg-slate-950/70 backdrop-blur-2xl border-b border-white/10 shadow-lg shadow-black/20;
+    @apply bg-[#2C2C2C] border-b border-[#3D423F] text-white shadow-md shadow-black/10;
   }
 
   .glass-sidebar {
-    @apply bg-slate-950/75 backdrop-blur-2xl border-r border-white/10;
+    @apply bg-[#2C2C2C] border-r border-[#3D423F] text-stone-200;
   }
 
   .glass-modal {
-    @apply bg-slate-900/85 backdrop-blur-2xl border border-white/15 shadow-2xl shadow-black/60;
+    @apply bg-white border border-[#E8E6E1] shadow-2xl shadow-stone-900/10 text-[#2C2C2C];
   }
 
   .glass-input {
-    @apply bg-slate-950/60 backdrop-blur-md border border-white/10 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-amber-500/80 focus:ring-1 focus:ring-amber-500/80 transition-all duration-200;
+    @apply bg-white border border-[#E8E6E1] text-[#2C2C2C] placeholder-stone-400 focus:outline-none focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e] transition-all duration-200;
   }
 }
 
-/* Custom glass scrollbars */
+/* Custom scrollbars */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(15, 23, 42, 0.4);
+  background: rgba(240, 238, 233, 0.6);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(201, 169, 110, 0.4);
   border-radius: 9999px;
-  backdrop-filter: blur(4px);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(245, 158, 11, 0.5);
+  background: rgba(201, 169, 110, 0.8);
 }
+

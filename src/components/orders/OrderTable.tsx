@@ -89,14 +89,14 @@ export const OrderTable: React.FC<OrderTableProps> = ({
 
         {/* Status Dropdown Filter */}
         <div className="relative flex-1 sm:flex-none">
-          <Filter className="w-4 h-4 text-slate-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+          <Filter className="w-4 h-4 text-stone-400 absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none" />
           <select
             value={selectedStatus}
             onChange={(e) => setSelectedStatus(e.target.value)}
-            className="w-full sm:w-auto pl-9 pr-8 py-2.5 rounded-xl glass-input text-xs sm:text-sm cursor-pointer appearance-none"
+            className="w-full sm:w-auto pl-9 pr-8 py-2.5 rounded-xl glass-input text-xs sm:text-sm cursor-pointer appearance-none bg-white text-[#2C2C2C]"
           >
             {statusOptions.map((opt) => (
-              <option key={opt.value} value={opt.value} className="bg-slate-900 text-slate-100">
+              <option key={opt.value} value={opt.value} className="bg-white text-[#2C2C2C]">
                 {opt.label}
               </option>
             ))}
@@ -112,11 +112,11 @@ export const OrderTable: React.FC<OrderTableProps> = ({
           </div>
         ) : filteredOrders.length === 0 ? (
           <div className="py-16 px-4 text-center">
-            <div className="w-16 h-16 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center mx-auto mb-4 text-slate-500">
+            <div className="w-16 h-16 rounded-2xl bg-stone-100 border border-[#E8E6E1] flex items-center justify-center mx-auto mb-4 text-stone-400">
               <ShoppingBag className="w-8 h-8 opacity-60" />
             </div>
-            <h3 className="text-lg font-bold text-slate-200">No orders found</h3>
-            <p className="text-xs text-slate-400 max-w-sm mx-auto mt-1">
+            <h3 className="font-serif text-xl font-bold text-[#2C2C2C]">No orders found</h3>
+            <p className="text-xs text-[#666666] max-w-sm mx-auto mt-1">
               {orders.length === 0
                 ? 'No customer orders have been received yet.'
                 : 'No orders match your search query or status filter.'}
@@ -127,7 +127,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                   setSearchTerm('');
                   setSelectedStatus('All');
                 }}
-                className="mt-4 px-4 py-2 rounded-xl bg-white/10 hover:bg-white/15 text-xs font-semibold text-slate-300 transition-colors"
+                className="mt-4 px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-xs font-semibold text-[#2C2C2C] transition-colors"
               >
                 Clear Filters
               </button>
@@ -137,7 +137,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="border-b border-white/10 bg-slate-950/40 text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                <tr className="border-b border-[#E8E6E1] bg-[#4A4F4C] text-[11px] font-bold uppercase tracking-wider text-white">
                   <th className="py-4 px-6">Order ID / Reference</th>
                   <th className="py-4 px-6">Customer Phone</th>
                   <th className="py-4 px-6">Total Amount</th>
@@ -146,22 +146,22 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                   <th className="py-4 px-6 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-white/5 text-sm">
+              <tbody className="divide-y divide-[#E8E6E1] text-sm">
                 {filteredOrders.map((order) => (
                   <tr
                     key={order.id}
                     onClick={() => onViewOrder(order)}
-                    className="hover:bg-white/5 transition-colors cursor-pointer group"
+                    className="hover:bg-[#FAF9F7] transition-colors cursor-pointer group"
                   >
                     {/* Order ID & Reference */}
                     <td className="py-4 px-6">
                       <div className="space-y-0.5">
-                        <div className="font-mono text-xs font-bold text-slate-100 group-hover:text-amber-400 transition-colors">
+                        <div className="font-mono text-xs font-bold text-[#2C2C2C] group-hover:text-[#8B6F47] transition-colors">
                           #{order.id.substring(0, 8)}
                         </div>
                         {order.paystack_reference && (
-                          <div className="text-[11px] text-slate-400 font-mono flex items-center gap-1">
-                            <CreditCard className="w-3 h-3 text-slate-500" />
+                          <div className="text-[11px] text-[#666666] font-mono flex items-center gap-1">
+                            <CreditCard className="w-3 h-3 text-stone-400" />
                             <span>{order.paystack_reference}</span>
                           </div>
                         )}
@@ -170,14 +170,14 @@ export const OrderTable: React.FC<OrderTableProps> = ({
 
                     {/* Customer Phone */}
                     <td className="py-4 px-6">
-                      <div className="flex items-center gap-1.5 text-xs text-slate-300 font-medium">
-                        <Phone className="w-3.5 h-3.5 text-slate-500" />
+                      <div className="flex items-center gap-1.5 text-xs text-[#2C2C2C] font-medium">
+                        <Phone className="w-3.5 h-3.5 text-stone-400" />
                         <span>{order.phone_number || 'N/A'}</span>
                       </div>
                     </td>
 
                     {/* Total Amount */}
-                    <td className="py-4 px-6 font-extrabold text-amber-400">
+                    <td className="py-4 px-6 font-extrabold text-[#8B6F47]">
                       {formatNaira(order.total_amount)}
                     </td>
 
@@ -189,21 +189,21 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                           value={order.status}
                           onChange={(e) => handleInlineStatusChange(e, order.id)}
                           disabled={updatingOrderId === order.id}
-                          className="glass-input rounded-lg text-[11px] font-semibold text-slate-300 px-2 py-1 cursor-pointer disabled:opacity-50"
+                          className="glass-input rounded-lg text-[11px] font-semibold text-[#2C2C2C] bg-white border-[#E8E6E1] px-2 py-1 cursor-pointer disabled:opacity-50"
                         >
-                          <option value="pending" className="bg-slate-900">Pending</option>
-                          <option value="paid" className="bg-slate-900">Paid</option>
-                          <option value="processing" className="bg-slate-900">Processing</option>
-                          <option value="shipped" className="bg-slate-900">Shipped</option>
-                          <option value="delivered" className="bg-slate-900">Delivered</option>
-                          <option value="failed" className="bg-slate-900">Failed</option>
-                          <option value="cancelled" className="bg-slate-900">Cancelled</option>
+                          <option value="pending" className="bg-white">Pending</option>
+                          <option value="paid" className="bg-white">Paid</option>
+                          <option value="processing" className="bg-white">Processing</option>
+                          <option value="shipped" className="bg-white">Shipped</option>
+                          <option value="delivered" className="bg-white">Delivered</option>
+                          <option value="failed" className="bg-white">Failed</option>
+                          <option value="cancelled" className="bg-white">Cancelled</option>
                         </select>
                       </div>
                     </td>
 
                     {/* Date */}
-                    <td className="py-4 px-6 text-xs text-slate-400 whitespace-nowrap">
+                    <td className="py-4 px-6 text-xs text-[#666666] whitespace-nowrap">
                       {formatDate(order.created_at)}
                     </td>
 
@@ -214,7 +214,7 @@ export const OrderTable: React.FC<OrderTableProps> = ({
                           e.stopPropagation();
                           onViewOrder(order);
                         }}
-                        className="p-2 rounded-xl text-slate-400 hover:text-amber-400 hover:bg-amber-500/10 border border-transparent hover:border-amber-500/20 transition-all inline-flex items-center gap-1 text-xs font-semibold"
+                        className="p-2 rounded-xl text-stone-400 hover:text-[#8B6F47] hover:bg-[#c9a96e]/10 border border-transparent hover:border-[#c9a96e]/20 transition-all inline-flex items-center gap-1 text-xs font-semibold"
                       >
                         <Eye className="w-4 h-4" />
                         <span className="hidden sm:inline">Details</span>
@@ -230,3 +230,4 @@ export const OrderTable: React.FC<OrderTableProps> = ({
     </div>
   );
 };
+

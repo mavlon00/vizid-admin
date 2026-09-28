@@ -8,23 +8,26 @@ export default {
     extend: {
       colors: {
         brand: {
-          50: '#fbf9f5',
-          100: '#f5efe4',
-          200: '#e7d9c1',
-          300: '#d7bc97',
-          400: '#c59a6d',
-          500: '#b7804a',
-          600: '#a2673d',
-          700: '#834e34',
-          800: '#6b402f',
-          900: '#58362a',
-          950: '#301c15',
+          dark: '#2C2C2C',
+          green: '#4A4F4C',
+          slate: '#3D423F',
+          gold: '#c9a96e',
+          'gold-dark': '#8B6F47',
+          'gold-light': '#dfc597',
+          bg: '#FAF9F7',
+          'bg-alt': '#F9F9F8',
+          text: '#2C2C2C',
+          muted: '#666666',
+          border: '#E8E6E1',
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        serif: ['"Cormorant Garamond"', 'serif'],
+        sans: ['Montserrat', 'sans-serif'],
+        heading: ['"Cormorant Garamond"', 'serif'],
       },
     },
   },
   plugins: [],
 }
+

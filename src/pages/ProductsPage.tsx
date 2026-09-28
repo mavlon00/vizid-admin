@@ -60,26 +60,26 @@ export const ProductsPage: React.FC = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-100 tracking-tight flex items-center gap-3">
-            <Package className="w-7 h-7 text-amber-400" />
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#2C2C2C] tracking-tight flex items-center gap-3">
+            <Package className="w-8 h-8 text-[#c9a96e]" />
             <span>Products Catalog</span>
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-1">
+          <p className="text-xs sm:text-sm text-[#666666] mt-1 font-sans">
             Manage product inventory, pricing, descriptions, and high-res imagery.
           </p>
         </div>
 
         <button
           onClick={() => refetch()}
-          className="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-slate-400 hover:text-slate-100 transition-colors self-start sm:self-auto"
+          className="p-2.5 rounded-xl bg-white border border-[#E8E6E1] text-[#666666] hover:text-[#2C2C2C] hover:border-[#c9a96e] transition-colors self-start sm:self-auto shadow-sm"
           title="Refresh products list"
         >
-          <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`w-4 h-4 ${isLoading ? 'animate-spin text-[#c9a96e]' : ''}`} />
         </button>
       </div>
 
       {error && (
-        <div className="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs">
+        <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs">
           {error}
         </div>
       )}
@@ -121,3 +121,4 @@ export const ProductsPage: React.FC = () => {
     </div>
   );
 };
+

@@ -46,26 +46,26 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 overflow-y-auto">
-      {/* Glass Backdrop */}
+      {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity animate-in fade-in"
+        className="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity animate-in fade-in"
         onClick={onClose}
       />
 
-      {/* Glass Dialog */}
+      {/* Dialog */}
       <div
         className={`relative w-full ${maxWidthClasses} glass-modal rounded-3xl overflow-hidden z-10 animate-in fade-in zoom-in-95 duration-200 my-8`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="flex items-start justify-between p-6 border-b border-white/10 bg-white/5">
+        <div className="flex items-start justify-between p-6 border-b border-[#E8E6E1] bg-[#FAF9F7]">
           <div>
-            <h3 className="text-xl font-bold text-slate-100">{title}</h3>
-            {subtitle && <p className="text-xs text-slate-400 mt-1">{subtitle}</p>}
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#2C2C2C]">{title}</h3>
+            {subtitle && <p className="text-xs text-[#666666] mt-1">{subtitle}</p>}
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-slate-400 hover:text-slate-100 hover:bg-white/10 transition-colors"
+            className="p-1.5 rounded-xl text-stone-400 hover:text-[#2C2C2C] hover:bg-stone-200/60 transition-colors"
             aria-label="Close modal"
           >
             <X className="w-5 h-5" />
@@ -73,10 +73,11 @@ export const Modal: React.FC<ModalProps> = ({
         </div>
 
         {/* Content */}
-        <div className="p-6 max-h-[calc(85vh-120px)] overflow-y-auto text-slate-200">
+        <div className="p-6 max-h-[calc(85vh-120px)] overflow-y-auto text-[#2C2C2C]">
           {children}
         </div>
       </div>
     </div>
   );
 };
+
