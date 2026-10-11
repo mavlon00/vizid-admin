@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Modal } from '../common/Modal';
 import { Product, ProductFormData, PRODUCT_CATEGORIES } from '../../types';
-import { Upload, X, Loader2, Image as ImageIcon, Plus } from 'lucide-react';
+import { Upload, X, Loader2, Image as ImageIcon } from 'lucide-react';
 
 interface ProductFormModalProps {
   isOpen: boolean;
@@ -134,15 +134,15 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
     <Modal isOpen={isOpen} onClose={onClose} title={title} maxWidth="xl">
       <form onSubmit={handleSubmit} className="space-y-5">
         {formError && (
-          <div className="p-3.5 rounded-xl bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs font-medium">
+          <div className="p-3.5 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-medium">
             {formError}
           </div>
         )}
 
         {/* Product Name */}
         <div>
-          <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
-            Product Name <span className="text-rose-500">*</span>
+          <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
+            Product Name <span className="text-rose-400">*</span>
           </label>
           <input
             type="text"
@@ -150,36 +150,36 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
             value={name}
             onChange={(e) => setName(e.target.value)}
             placeholder="e.g. Modern Velvet Accent Chair"
-            className="w-full px-4 py-3 rounded-xl bg-white border border-[#E8E6E1] text-[#2C2C2C] placeholder-stone-400 focus:outline-none focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e] text-sm transition-colors"
+            className="w-full px-4 py-3 rounded-xl glass-input text-sm"
           />
         </div>
 
         {/* Category & Price */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
               Category
             </label>
             <select
               value={category}
               onChange={handleCategorySelectChange}
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#E8E6E1] text-[#2C2C2C] focus:outline-none focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e] text-sm transition-colors cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl glass-input text-sm cursor-pointer bg-[#141414] text-white"
             >
               {PRODUCT_CATEGORIES.map((cat) => (
-                <option key={cat} value={cat}>
+                <option key={cat} value={cat} className="bg-[#141414] text-white">
                   {cat}
                 </option>
               ))}
-              <option value="__custom__">+ Add Custom Category...</option>
+              <option value="__custom__" className="bg-[#141414] text-[#D4AF37]">+ Add Custom Category...</option>
             </select>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
+            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
               Price (₦ Naira)
             </label>
             <div className="relative">
-              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-stone-400 font-semibold text-sm">
+              <span className="absolute inset-y-0 left-0 pl-4 flex items-center text-[#D4AF37] font-semibold text-sm">
                 ₦
               </span>
               <input
@@ -189,7 +189,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
                 placeholder="150000"
-                className="w-full pl-9 pr-4 py-3 rounded-xl bg-white border border-[#E8E6E1] text-[#2C2C2C] placeholder-stone-400 focus:outline-none focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e] text-sm transition-colors"
+                className="w-full pl-9 pr-4 py-3 rounded-xl glass-input text-sm"
               />
             </div>
           </div>
@@ -198,8 +198,8 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
         {/* Custom Category Input (if selected) */}
         {isCustomCategory && (
           <div className="animate-in fade-in duration-200">
-            <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
-              New Custom Category Name <span className="text-rose-500">*</span>
+            <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
+              New Custom Category Name <span className="text-rose-400">*</span>
             </label>
             <input
               type="text"
@@ -207,14 +207,14 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
               value={customCategory}
               onChange={(e) => setCustomCategory(e.target.value)}
               placeholder="e.g. Sculptures & Art"
-              className="w-full px-4 py-3 rounded-xl bg-white border border-[#E8E6E1] text-[#2C2C2C] placeholder-stone-400 focus:outline-none focus:border-[#c9a96e] text-sm"
+              className="w-full px-4 py-3 rounded-xl glass-input text-sm"
             />
           </div>
         )}
 
         {/* Description */}
         <div>
-          <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
+          <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
             Description
           </label>
           <textarea
@@ -222,19 +222,19 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Detailed description of materials, dimensions, craftsmanship, and style..."
-            className="w-full px-4 py-3 rounded-xl bg-white border border-[#E8E6E1] text-[#2C2C2C] placeholder-stone-400 focus:outline-none focus:border-[#c9a96e] focus:ring-1 focus:ring-[#c9a96e] text-sm transition-colors resize-none"
+            className="w-full px-4 py-3 rounded-xl glass-input text-sm resize-none"
           />
         </div>
 
         {/* Image Upload */}
         <div>
-          <label className="block text-xs font-semibold text-[#4A4F4C] uppercase tracking-wider mb-2">
-            Product Image (Supabase Storage: <code className="text-[#8B6F47] font-semibold">product-images</code>)
+          <label className="block text-xs font-semibold text-stone-300 uppercase tracking-wider mb-2">
+            Product Image (Supabase Storage: <code className="text-[#D4AF37] font-semibold">product-images</code>)
           </label>
 
           <div className="flex flex-col sm:flex-row gap-4 items-start">
             {/* Image Preview Box */}
-            <div className="w-28 h-28 rounded-2xl bg-stone-100 border border-[#E8E6E1] overflow-hidden relative shrink-0 flex items-center justify-center group shadow-sm">
+            <div className="w-28 h-28 rounded-2xl bg-stone-900 border border-white/15 overflow-hidden relative shrink-0 flex items-center justify-center group shadow-sm">
               {imagePreview ? (
                 <>
                   <img
@@ -249,7 +249,7 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                         setImageFile(null);
                         setImagePreview(initialProduct?.image_url || null);
                       }}
-                      className="absolute top-1 right-1 p-1 bg-black/70 hover:bg-rose-600 text-white rounded-full transition-colors"
+                      className="absolute top-1 right-1 p-1 bg-black/80 hover:bg-rose-600 text-white rounded-full transition-colors"
                       title="Clear uploaded image"
                     >
                       <X className="w-3.5 h-3.5" />
@@ -257,8 +257,8 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
                   )}
                 </>
               ) : (
-                <div className="flex flex-col items-center text-stone-400 p-2 text-center">
-                  <ImageIcon className="w-8 h-8 mb-1 opacity-50" />
+                <div className="flex flex-col items-center text-stone-500 p-2 text-center">
+                  <ImageIcon className="w-8 h-8 mb-1 opacity-50 text-[#D4AF37]" />
                   <span className="text-[10px]">No image</span>
                 </div>
               )}
@@ -266,12 +266,12 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
 
             {/* Upload Area */}
             <div className="flex-1 w-full">
-              <label className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-[#E8E6E1] hover:border-[#c9a96e] bg-[#FAF9F7] hover:bg-white rounded-2xl cursor-pointer transition-all group">
-                <Upload className="w-6 h-6 text-stone-400 group-hover:text-[#c9a96e] mb-2 transition-colors" />
-                <span className="text-xs font-semibold text-[#2C2C2C]">
+              <label className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-white/15 hover:border-[#D4AF37] bg-white/5 hover:bg-white/10 rounded-2xl cursor-pointer transition-all group">
+                <Upload className="w-6 h-6 text-stone-400 group-hover:text-[#D4AF37] mb-2 transition-colors" />
+                <span className="text-xs font-semibold text-white">
                   {imageFile ? imageFile.name : 'Click to select or drag image file'}
                 </span>
-                <span className="text-[10px] text-[#666666] mt-1">
+                <span className="text-[10px] text-stone-400 mt-1">
                   Supports JPG, PNG, WEBP (Max 10MB)
                 </span>
                 <input
@@ -286,21 +286,21 @@ export const ProductFormModal: React.FC<ProductFormModalProps> = ({
         </div>
 
         {/* Modal Action Buttons */}
-        <div className="flex items-center justify-end gap-3 pt-4 border-t border-[#E8E6E1] mt-6">
+        <div className="flex items-center justify-end gap-3 pt-4 border-t border-white/10 mt-6">
           <button
             type="button"
             onClick={onClose}
             disabled={isSubmitting}
-            className="px-5 py-2.5 rounded-xl text-sm font-medium text-[#2C2C2C] bg-stone-100 hover:bg-stone-200 transition-colors disabled:opacity-50"
+            className="px-5 py-2.5 rounded-xl text-sm font-medium btn-glass disabled:opacity-50"
           >
             Cancel
           </button>
           <button
             type="submit"
             disabled={isSubmitting}
-            className="px-6 py-2.5 rounded-xl text-sm font-semibold bg-[#c9a96e] hover:bg-[#8B6F47] text-white transition-all shadow-md shadow-[#c9a96e]/20 flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#c9a96e] disabled:opacity-50"
+            className="btn-gold px-6 py-2.5 rounded-xl text-sm font-semibold text-black flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] disabled:opacity-50"
           >
-            {isSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
+            {isSubmitting && <Loader2 className="w-4 h-4 animate-spin text-black" />}
             <span>{initialProduct ? 'Save Changes' : 'Create Product'}</span>
           </button>
         </div>
