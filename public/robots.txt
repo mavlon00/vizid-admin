@@ -1,0 +1,4 @@
+# https://admin.viziddecors.com robots.txt
+# Admin control panel - disallow all web crawlers
+User-agent: *
+Disallow: /
