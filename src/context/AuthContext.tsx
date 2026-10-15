@@ -32,7 +32,6 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
         .maybeSingle();
 
       if (error) {
-        console.error('Error fetching user profile:', error);
         return null;
       }
 
@@ -48,8 +47,7 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setProfile(null);
       setIsAdmin(false);
       return null;
-    } catch (err) {
-      console.error('Unexpected error checking admin role:', err);
+    } catch {
       setProfile(null);
       setIsAdmin(false);
       return null;
@@ -76,8 +74,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             setIsAdmin(false);
           }
         }
-      } catch (err) {
-        console.error('Error in initializeAuth:', err);
+      } catch {
+        // Ignore auth initialization failures and fall back to unauthenticated state.
       } finally {
         if (mounted) {
           setIsLoading(false);
@@ -154,8 +152,8 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setIsLoading(true);
     try {
       await supabase.auth.signOut();
-    } catch (err) {
-      console.error('Error signing out:', err);
+    } catch {
+      // Ignore sign-out failures and clear local auth state.
     } finally {
       setUser(null);
       setSession(null);

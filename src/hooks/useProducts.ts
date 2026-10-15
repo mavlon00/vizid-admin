@@ -25,7 +25,6 @@ export const useProducts = () => {
 
       setProducts(data as Product[]);
     } catch (err: any) {
-      console.error('Error fetching products:', err);
       setError(err.message || 'Failed to load products');
     } finally {
       setIsLoading(false);
@@ -108,7 +107,6 @@ export const useProducts = () => {
 
       return { success: true };
     } catch (err: any) {
-      console.error('Error adding product:', err);
       return { success: false, error: err.message || 'Failed to create product.' };
     }
   };
@@ -173,7 +171,6 @@ export const useProducts = () => {
 
       return { success: true };
     } catch (err: any) {
-      console.error('Error updating product:', err);
       return { success: false, error: err.message || 'Failed to update product.' };
     }
   };
@@ -198,16 +195,13 @@ export const useProducts = () => {
             .from('product-images')
             .remove([filePath]);
           
-          if (storageErr) {
-            console.warn('Could not remove image file from storage:', storageErr);
-          }
+          // Ignore storage cleanup failures if the file is already missing.
         }
       }
 
       setProducts((prev) => prev.filter((p) => p.id !== product.id));
       return { success: true };
     } catch (err: any) {
-      console.error('Error deleting product:', err);
       return { success: false, error: err.message || 'Failed to delete product.' };
     }
   };
